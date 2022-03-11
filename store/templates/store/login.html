@@ -1,0 +1,19 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+<br><br><br><br>
+<center><h2>Sign in </h2></center>
+<br>
+   <div class="d-flex justify-content-center">
+   <form method="POST">
+   {% csrf_token %}
+        {{form}}
+        <br>
+        <p><b>{{message}}</b></p>
+        <p> Are you a new member? Click <a href="{% url 'signup'%}">here</a></p>
+        <button type="submit" class="btn btn-secondary">Sign in</button>
+    </form>
+   </div>
+</div>
+{% endblock content %}
