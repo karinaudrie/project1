@@ -1,21 +1,93 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-	<div class="row">
-    {% for product in products %}
-		<div class="col-lg-4">
-			<img class="thumbnail" src="{{product.imageURL}}">
-			<div class="box-element product">
-				<h6><strong>{{product.name}}</strong></h6>
-				<hr>
+<!--Spacer-->
+<div class="spacer">
+	&nbsp;
+</div>
+<br><br><br>
+<h1 id="always"><center>
+	Always Available Cupcakes
+</center></h1>
+<div class="row">
+	{% for product in products %}
+	<div class="col-4">
+		<img class="store-img rounded mx-auto d-block" src="{{product.imageURL}}" style="margin-bottom: 20px;">
+		<div class="box-element product">
+			<h6><strong>{{product.name}}</strong></h6>
+			<hr>
+			<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart btn-mod">Add to Cart</button>
+			<a class="btn btn-outline-success building-link" data-toggle="modal" data-target="#productModal{{ forloop.counter }}" data-product="{{product.id}}" data-name="{{product.name}}">
+				View
+			</a>
+			<!-- <a class="btn btn-outline-success" href="#">View</a> -->
+			<h4 style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
+		</div>
+	</div>
 
-				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-				<a class="btn btn-outline-success" href="#">View</a>
-				<h4 style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
-
+	<!-- Modal -->
+	<div class="modal fade" id="productModal{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="product-name">{{product.name}}</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<table style="margin-left: auto; margin-right: auto;">
+						<tr>
+							<td><img class="rounded mx-auto d-block" src="{{product.imageURL}}" style="width:70%;"></td>
+							<td><img class="rounded mx-auto d-block" src="{{product.imageDetailURL}}" style="width:70%;"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<p style="text-align: center;" id="product-desc">{{product.desc}}</p>
+				</div>
 			</div>
 		</div>
-    {% endfor %}
 	</div>
+
+	{% endfor %}
+</div>
+
+<br><br><br>
+<h1 id="custom"><center>
+	Custom Cupcakes
+</center></h1>
+
+<!--Footer-->
+<div class="footer">
+	<div class="footer-content">
+		<div class="alignleft">
+			<img src="{% static 'images/logo.svg' %}" alt="Logo" width="50px" display="inline" style="margin: 50px 0px 50px 50px;">
+		</div>
+
+		<div class="aligncenter">
+			<p>© 2022 All Rights Reserved<br>Terms of Use and Privacy Policy</p>
+		</div>
+
+		<div class="alignright">
+			<div class="Mail">
+				<p>Email : <a href="mailto:inquiry@torontocupcake.com">inquiry@torontocupcake.com</a></p>
+			</div>
+			<div class="phone">
+				<p>phone : (North America) +1-877-334-9468<br>(Outside of North Am) +001-647-478-9464<br>(Local Toronto and GTA) 647-478-9464</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$('.building-link').click(function() {
+		$('#product-name').html($(this).data('name'));
+		$('#product-desc').html($(this).data('desc'));
+		$('#product-img').src($(this).data('imageURL'));
+	});
+</script>
+
 
 {% endblock content %}

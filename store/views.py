@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import json
 import datetime
 from .models import *
 from .utils import cookieCart, cartData, guestOrder
-from .forms import sign_in,sign_up
+from .forms import sign_in, sign_up
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate, login, logout
 
 def store(request):
     data = cartData(request)
@@ -18,6 +18,56 @@ def store(request):
     products = Product.objects.all()
     context = {'products':products, 'cartItems': cartItems}
     return render(request, 'store/store.html', context)
+
+def covid(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items':items, 'order':order, 'cartItems': cartItems}
+    return render(request, 'store/covid.html', context)
+
+def event(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items':items, 'order':order, 'cartItems': cartItems}
+    return render(request, 'store/event.html', context)
+
+def main(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items':items, 'order':order, 'cartItems': cartItems}
+    return render(request, 'store/main.html', context)
+
+def contactus(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items':items, 'order':order, 'cartItems': cartItems}
+    return render(request, 'store/contactus.html', context)
+
+def faq(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items':items, 'order':order, 'cartItems': cartItems}
+    return render(request, 'store/faq.html', context)
 
 def cart(request):
     data = cartData(request)
@@ -85,19 +135,46 @@ def processOrder(request):
         order.complete = True
     order.save()
 
-    if order.shipping == True:
-        ShippingAddress.objects.create(
-        customer=customer,
-        order=order,
-        address=data['shipping']['address'],
-        city=data['shipping']['city'],
-        state=data['shipping']['state'],
-        zipcode=data['shipping']['zipcode'],
-        )
+    # if order.shipping == True:
+    #     ShippingAddress.objects.create(
+    #     customer=customer,
+    #     order=order,
+    #     address=data['shipping']['address'],
+    #     city=data['shipping']['city'],
+    #     state=data['shipping']['state'],
+    #     zipcode=data['shipping']['zipcode'],
+    #     )
 
     return JsonResponse('Payment complete!', safe=False)
 
+def product_list(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    products = Product.objects.all()
+    myFilter = ProductFilter(request.GET, queryset=Product.objects.all())
+    products = myFilter.qs
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+    context = {
+        'category': category,
+        'categories': categories,
+        'products': products,
+        'myFilter': myFilter,
+    }
+
+    return render(request, 'store/product/product_list.html', context)
+
+
 def log_in(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items':items, 'order':order, 'cartItems': cartItems}
+
     if request.method=="POST":
         fillform = sign_in(request.POST)
         if(fillform.is_valid()):
@@ -111,7 +188,7 @@ def log_in(request):
             else:
                 fillform = sign_in()
                 message='Invalid username, Please Try again'
-                return render(request,'store/login.html',{'form':fillform,'message':message})
+                return render(request,'store/login.html',{'form':fillform,'message':message}, context)
     else:
         fillform=sign_in()
         return render(request,'store/login.html',{'form':fillform})
@@ -143,7 +220,7 @@ def signup(request):
     else:
         fillform=sign_up()
         return render(request,'store/signup.html',{'form':fillform})
-        
+
 def signout(request):
     logout(request)
     return redirect('/')

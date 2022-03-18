@@ -1,15 +1,13 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-
 <!--Spacer-->
 <div class="spacer">
   &nbsp;<br><br><br><br><br>
 </div>
-
 <div class="container">
-<br><br><br><br>
-<center><h2>Sign in </h2></center>
+<br>
+<center><h2>Sign up</h2></center>
 <br>
    <div class="d-flex justify-content-center">
    <form method="POST">
@@ -17,8 +15,8 @@
         {{form}}
         <br>
         <p><b>{{message}}</b></p>
-        <p> Are you a new member? Click <a href="{% url 'signup'%}">here</a></p>
-        <button type="submit" class="btn btn-secondary">Sign in</button>
+        <p> Click <a href="{% url 'signin'%}">here </a>to log in</p>
+        <button type="submit" class="btn btn-secondary">Sign up</button>
     </form>
    </div>
 </div>

@@ -9,6 +9,7 @@ class sign_in(forms.Form):
     'placeholder':'Password',
     'type':'password',
     'required':True}))
+
 class sign_up(forms.Form):
     username = forms.CharField(widget = forms.TextInput(attrs=
     {'class':'form-control','placeholder':'Username','type':'text','required':True
@@ -20,8 +21,8 @@ class sign_up(forms.Form):
         'class':'form-control','placeholder':'password','required':True,'type':'password'
         }))
     Firstname = forms.CharField(widget = forms.TextInput(attrs={
-        'class':'form-control','placeholder':'firstname','required':True,'type':'text'
+        'class':'form-control','placeholder':'First Name','required':True,'type':'text'
         }))
     Lastname = forms.CharField(widget = forms.TextInput(attrs={
-        'class':'form-control','placeholder':'lastname','required':True,'type':'text'
+        'class':'form-control','placeholder':'Last Name','required':True,'type':'text'
         }))

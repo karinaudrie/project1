@@ -1,0 +1,58 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<!--Spacer-->
+<div class="spacer">
+  &nbsp;<br><br><br><br><br>
+</div>
+
+<!--Covid Info-->
+<div class="title">
+  <div class="title-content">
+    <div class="title-text">
+      <h1>
+        <center>COVID-19 PROTOCOLS AND INFORMATION</center>
+      </h1>
+    </div>
+  </div>
+  <div class="covid-info">
+    <div class="covid-info-content">
+      <h3>We are open for business and with the following protocols in place we are able to supply you with all the essential cupcakes you need!</h3>
+      <ul>
+        <li style="text-align: left">24 hour online ordering. </li>
+        <li style="text-align: left">Order anytime before 5PM and we will 'No contact' deliver for you the following day. We are not able to process same day orders for the foreseeable future.</li>
+        <li style="text-align: left">At this time pick up is not available. We are providing "no contact" delivery for all orders. </li>
+      </ul>
+      <h3>
+        <center>
+          Please Get Vaccinated! &#128522;
+        </center>
+      </h3>
+    </div>
+  </div>
+</div>
+
+<!--Footer-->
+<div class="footer">
+  <div class="footer-content">
+    <div class="alignleft">
+      <img src="{% static 'images/logo.svg' %}" alt="Logo" width="50px" display="inline" style="margin: 50px 0px 50px 50px;">
+    </div>
+
+    <div class="aligncenter">
+      <p>© 2022 All Rights Reserved<br>Terms of Use and Privacy Policy</p>
+    </div>
+
+    <div class="alignright">
+      <div class="Mail">
+        <p>Email : <a href="mailto:inquiry@torontocupcake.com">inquiry@torontocupcake.com</a></p>
+      </div>
+      <div class="phone">
+        <p>phone : (North America) +1-877-334-9468<br>(Outside of North Am) +001-647-478-9464<br>(Local Toronto and GTA) 647-478-9464</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
