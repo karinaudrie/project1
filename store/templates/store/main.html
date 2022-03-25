@@ -108,7 +108,7 @@
 
         {% if user.is_authenticated %}
         <div class="form-inline my-2 my-lg-0">
-          <a href="{% url 'signout'%}" class="btn btn-dark">Logout</a>
+          <a href="{% url 'signout'%}" class="btn btn-dark" id="logout-button">Logout</a>
 
           <a href="{% url 'cart' %}">
             <img id="cart-icon" src="{% static 'images/cart.svg' %}">
@@ -131,6 +131,7 @@
       </div>
     </nav>
   </div>
+
 
   <div class="container">
     <br>
@@ -300,151 +301,3 @@
 </body>
 
 </html>
-
-<!--
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
-      </li>
-
-    </ul>
-    <div class="form-inline my-2 my-lg-0">
-      <a href="{% url 'signin' %}" class="btn btn-warning">Login</a>
-
-      <a href="{% url 'cart' %}">
-        <img id="cart-icon" src="{% static 'images/cart.svg' %}">
-      </a>
-      <p id="cart-total">{{cartItems}}</p>
-
-    </div>
-  </div>
-</nav> -->
-
-
-<!-- <div class="slideshow-container">
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 3</div>
-    <img src="{% static 'images/slideshow4.jpg' %}" style="width:100%">
-    <div class="text">
-      <h2>Welcome!</h2>
-      <h3>Thank you for stopping by Toronto Cupcake.</h3>
-      <p>Canada's and the GTA's favourite stop for that special treat. Order cupcakes online 24/7 for your special event. Delivery avaialable most days 8AM-6PM TO time.</p>
-    </div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 3</div>
-    <img src="{% static 'images/slideshow2.jpg' %}" style="width:100%">
-    <div class="text">
-      <h2>One Dozen One Click!</h2>
-      <h3>Can't decide which cupcakes you should buy?</h3>
-      <p>We could help you to pick 12 delicious "always available" cupcakes!</p>
-      <button type="button" name="button" class="btn1">Pick A Dozen For Me!</button>
-      <p> </p>
-    </div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">3 / 3</div>
-    <img src="{% static 'images/slideshow1.png' %}" style="width:100%">
-    <div class="text">Caption Three</div>
-  </div>
-
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-</div>
-<br><br><br>
-
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-  <br><br>
-</div> -->
-
-<!-- <script>
-  var slideIndex = 1;
-  showSlides(slideIndex);
-
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {
-      slideIndex = 1
-    }
-    if (n < 1) {
-      slideIndex = slides.length
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-  }
-</script> -->
-
-
-<!-- <nav class="navbar navbar-expand-lg bg-light navbar-light" style="background-color: #F0E4D7;">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="{% url 'main' %}">
-      <img src="{% static 'images/logo.svg' %}" alt="" width="30" height="24" class="d-inline-block align-text-top" style=" text-decoration:none;">
-      Toronto Cupcake
-    </a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto" id="MenuItems">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'main' %}">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="main.html#about-us" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            About
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="main.html#about-us">About Us</a></li>
-            <li><a class="dropdown-item" href="#">FAQs</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'store' %}">Cupcackes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
-        </li>
-      </ul>
-      <div class="form-inline my-2 my-lg-0">
-        <a href="{% url 'signin' %}" class="btn btn-warning">Login</a>
-
-        <a href="{% url 'cart' %}">
-          <img id="cart-icon" src="{% static 'images/cart.svg' %}">
-        </a>
-        <p id="cart-total">{{cartItems}}</p>
-
-        <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
-
-      </div>
-    </div>
-  </div>
-</nav> -->

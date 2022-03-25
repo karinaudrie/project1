@@ -147,23 +147,23 @@ def processOrder(request):
 
     return JsonResponse('Payment complete!', safe=False)
 
-def product_list(request, category_slug=None):
-    category = None
-    categories = Category.objects.all()
-    products = Product.objects.all()
-    myFilter = ProductFilter(request.GET, queryset=Product.objects.all())
-    products = myFilter.qs
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category)
-    context = {
-        'category': category,
-        'categories': categories,
-        'products': products,
-        'myFilter': myFilter,
-    }
-
-    return render(request, 'store/product/product_list.html', context)
+# def product_list(request, category_slug=None):
+#     category = None
+#     categories = Category.objects.all()
+#     products = Product.objects.all()
+#     myFilter = ProductFilter(request.GET, queryset=Product.objects.all())
+#     products = myFilter.qs
+#     if category_slug:
+#         category = get_object_or_404(Category, slug=category_slug)
+#         products = products.filter(category=category)
+#     context = {
+#         'category': category,
+#         'categories': categories,
+#         'products': products,
+#         'myFilter': myFilter,
+#     }
+#
+#     return render(request, 'store/product/product_list.html', context)
 
 
 def log_in(request):
@@ -188,7 +188,7 @@ def log_in(request):
             else:
                 fillform = sign_in()
                 message='Invalid username, Please Try again'
-                return render(request,'store/login.html',{'form':fillform,'message':message}, context)
+                return render(request,'store/login.html',{'form':fillform,'message':message})
     else:
         fillform=sign_in()
         return render(request,'store/login.html',{'form':fillform})

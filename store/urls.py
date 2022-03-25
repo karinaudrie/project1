@@ -13,9 +13,9 @@ urlpatterns = [
 	path('faq/', views.faq, name="faq"),
 	path('event/', views.event, name="event"),
 	path('checkout/', views.checkout, name="checkout"),
-	path('signin/',views.log_in,name='signin'),
-	path('signup/',views.signup,name='signup'),
-	path('signout/', views.signout,name='signout'),
+	path('signin/',views.log_in, name='signin'),
+	path('signup/',views.signup, name='signup'),
+	path('signout/', views.signout, name='signout'),
 
 	path('update_item/', views.updateItem, name="update_item"),
 	path('process_order/', views.processOrder, name="process_order"),
