@@ -8,6 +8,46 @@
 </div>
 
 <h1>FAQs</h1>
+<h1>Ordering</h1>
+</div>
+<button class="accordion">How much time needed for a custom order?</button>
+
+<div class="panel">
+  <p>It would be very helpful if you could give a minimum of 48 hours notice when ordering something special. For personalised stamping such as initials or logos <a href="contact-us.html">please call or email us</a>.</p>
+</div>
+
+<button class="accordion">What is the smallest order I can make?</button>
+<div class="panel">
+  <p>Minimum order is 1/2 dozen assorted cupcakes.</p>
+</div>
+
+<button class="accordion">What are my options for payment?</button>
+<div class="panel">
+  <p>We will accept cheque, money orders, all major credit cards, and paypal. We can also accept payment via email interac transaction (Canada only).</p>
+</div>
+
+<button class="accordion">When and how do I pay?</button>
+<div class="panel">
+  <p>Payment is due when you receive your invoice via email. After you have successfully completed an order you will receive an order confirmation email from Toronto Cupcake. Shortly afterwards you will be sent an invoice that can be paid online.</p>
+</div>
+
+
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+</script>
 
 <!--Footer-->
 <div class="footer">
